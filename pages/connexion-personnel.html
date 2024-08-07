@@ -101,31 +101,63 @@
     </style>
   </head>
   <body>
-    <div class="bg-background text-primary-foreground min-h-screen">
+    <div
+      class="bg-background text-primary-foreground min-h-screen flex flex-col justify-between"
+    >
       <header class="bg-red-600 p-8 shadow-lg">
         <h1 class="text-5xl font-bold text-center text-white">
           Doc à Tunis 🇹🇳
         </h1>
       </header>
-
       <div class="container mx-auto py-10">
-        <h2
-          class="text-4xl font-semibold mb-8 text-center text-white pd--10 rounded-lg bg-red-600"
-        >
-          Liste des projections
-        </h2>
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-          id="receive-projection"
-        ></div>
+        <div class="max-w-md mx-auto bg-card p-6 rounded-lg shadow-lg">
+          <h2 class="text-2xl font-semibold mb-4 text-center text-red-600">
+            Connexion Personnel
+          </h2>
+          <form class="space-y-4">
+            <div>
+              <label
+                for="code"
+                class="block text-sm font-medium text-muted-foreground"
+                >Code</label
+              >
+              <input
+                id="code"
+                type="number"
+                class="mt-1 block w-full px-3 py-2 border border-input rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary-foreground transition-colors text-black"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="password"
+                class="block text-sm font-medium text-muted-foreground"
+                >Password</label
+              >
+              <input
+                id="password"
+                type="password"
+                class="mt-1 block w-full px-3 py-2 border border-input rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary-foreground transition-colors text-black"
+                required
+              />
+            </div>
+            <p class="text-sm text-red-600" id="message"></p>
+            <button
+              id="btn-login"
+              type="submit"
+              class="w-full bg-primary text-primary-foreground py-2 rounded-md hover:bg-primary/80 transition-colors"
+            >
+              Sign In
+            </button>
+          </form>
+        </div>
       </div>
-
       <footer class="bg-red-600 p-4 text-center">
         <p class="text-sm text-red-100">
           &copy; 2022 Doc à Tunis. All rights reserved.
         </p>
       </footer>
     </div>
-    <script src="./assets/js/script.js"></script>
+    <script src="../assets/js/connect-personnel.js"></script>
   </body>
 </html>
