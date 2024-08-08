@@ -124,7 +124,9 @@
             </li>
             <span>|</span>
             <li>
-              <a href="#" class="text-lg text-white hover:underline bg-red-900"
+              <a
+                href="./index.html"
+                class="text-lg text-white hover:underline bg-red-900"
                 >Bienvenue <span id="user"></span
               ></a>
             </li>
@@ -141,16 +143,84 @@
         <h2
           class="text-4xl font-semibold mb-8 text-center bg-red-600 rounded-lg"
         >
-          Liste des projections
+          Enregistrer Responsable de production
         </h2>
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          class="flex flex-col items-center justify-center w-full"
           id="receive-projection"
-        ></div>
+        >
+          <div class="mt-10 w-2/3">
+            <h2 class="text-3xl font-semibold mb-6 text-center text-red-600">
+              Formulaire
+            </h2>
+            <form class="bg-card p-6 rounded-lg shadow-lg">
+              <div class="mb-4">
+                <label
+                  class="block text-sm font-medium text-muted-foreground"
+                  for="code"
+                  >Code</label
+                >
+                <input
+                  type="number"
+                  id="code"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                  placeholder="Entrez le code"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  class="block text-sm font-medium text-muted-foreground"
+                  for="nom"
+                  >Nom</label
+                >
+                <input
+                  type="text"
+                  id="nom"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                  placeholder="Entez le nom"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  class="block text-sm font-medium text-muted-foreground"
+                  for="prenom"
+                  >Prenom</label
+                >
+                <input
+                  type="text"
+                  id="prenom"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                  placeholder="Entez le prenom"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  class="block text-sm font-medium text-muted-foreground"
+                  for="password"
+                  >Mot de passe</label
+                >
+                <input
+                  type="password"
+                  id="password"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                  placeholder="Entez le prenom"
+                />
+              </div>
+              <p id="message"></p>
+              <button
+                type="submit"
+                class="text-white font-semibold bg-black hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md"
+                id="register-producteur"
+              >
+                Enregistrer
+              </button>
+            </form>
+          </div>
+        </div>
         <h2
           class="text-4xl font-semibold mb-8 text-center bg-red-600 rounded-lg mt-10"
         >
-          Responsable de production
+          Liste Responsable de production
         </h2>
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
@@ -173,6 +243,6 @@
         </p>
       </footer>
     </div>
-    <script src="../../assets/js/acceuil-admin.js"></script>
+    <script src="../../assets/js/gestion-producteur.js"></script>
   </body>
 </html>
