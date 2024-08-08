@@ -59,11 +59,19 @@ const login = async () => {
             break;
 
           case "RespInspection":
-            console.log("RespInspection");
+            localStorage.setItem("token", result.token);
+            localStorage.setItem("role", result.data.role);
+            setInterval(() => {
+              window.location.href = "resp-inspection/index.html";
+            }, 1000);
             break;
 
           case "RespProduction":
-            console.log("RespProduction");
+            localStorage.setItem("token", result.token);
+            localStorage.setItem("role", result.data.role);
+            setInterval(() => {
+              window.location.href = "resp-production/index.html";
+            }, 1000);
             break;
           default:
             console.log("impossible");

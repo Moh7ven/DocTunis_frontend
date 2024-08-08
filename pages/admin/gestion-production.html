@@ -226,15 +226,87 @@
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
           id="receive-production"
         ></div>
-        <h2
-          class="text-4xl font-semibold mb-8 text-center bg-red-600 rounded-lg mt-10"
-        >
-          Responsable d'inspection
-        </h2>
+
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-          id="receive-inspection"
-        ></div>
+          class="flex flex-col items-center justify-center w-full hidden"
+          id="modifForm"
+        >
+          <h2
+            class="text-4xl w-full font-semibold mb-8 text-center bg-red-600 rounded-lg mt-10"
+          >
+            Modification
+          </h2>
+          <div class="flex flex-col items-center justify-center w-full" id="">
+            <div class="mt-10 w-2/3">
+              <h2 class="text-3xl font-semibold mb-6 text-center text-red-600">
+                Formulaire
+              </h2>
+              <form class="bg-card p-6 rounded-lg shadow-lg">
+                <input type="text" id="modifId" class="hidden" />
+                <div class="mb-4">
+                  <label
+                    class="block text-sm font-medium text-muted-foreground"
+                    for="modifCode"
+                    >Code</label
+                  >
+                  <input
+                    type="number"
+                    id="modifCode"
+                    class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                    placeholder="Entrez le code"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label
+                    class="block text-sm font-medium text-muted-foreground"
+                    for="modifNom"
+                    >Nom</label
+                  >
+                  <input
+                    type="text"
+                    id="modifNom"
+                    class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                    placeholder="Entez le nom"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label
+                    class="block text-sm font-medium text-muted-foreground"
+                    for="modifPrenom"
+                    >Prenom</label
+                  >
+                  <input
+                    type="text"
+                    id="modifPrenom"
+                    class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                    placeholder="Entez le prenom"
+                  />
+                </div>
+                <!-- <div class="mb-4">
+                  <label
+                    class="block text-sm font-medium text-muted-foreground"
+                    for="password"
+                    >Mot de passe</label
+                  >
+                  <input
+                    type="password"
+                    id="password"
+                    class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                    placeholder="Entez le prenom"
+                  />
+                </div> -->
+                <p id="message"></p>
+                <button
+                  type="submit"
+                  class="text-white font-semibold bg-green-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md"
+                  id="modif-producteur"
+                >
+                  Modifier
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
 
       <footer class="bg-red-600 p-4 text-center">

@@ -1,8 +1,8 @@
 const userRole = document.getElementById("user");
 const btnLogout = document.getElementById("logout");
 const message = document.getElementById("message");
-const registerBtn = document.getElementById("register-producteur");
-const receiveProduction = document.getElementById("receive-production");
+const registerBtn = document.getElementById("register-inspection");
+const receiveInspection = document.getElementById("receive-inspection");
 const btnModif = document.getElementById("modif-producteur");
 
 userRole.innerHTML = localStorage.getItem("role");
@@ -44,7 +44,7 @@ const registerProducteur = () => {
   const nom = document.getElementById("nom").value;
   const prenom = document.getElementById("prenom").value;
   const password = document.getElementById("password").value;
-  const role = "RespProduction";
+  const role = "RespInspection";
   const message = document.getElementById("message");
 
   const data = {
@@ -86,7 +86,7 @@ registerBtn.addEventListener("click", (e) => {
   registerProducteur();
 });
 
-const fetchProductions = async () => {
+const fetchInspections = async () => {
   try {
     const url = "http://localhost:3000/api/v1/users/get-all-users";
 
@@ -99,37 +99,37 @@ const fetchProductions = async () => {
     };
 
     const response = await fetch(url, options);
-    const productions = await response.json();
-    console.log(productions);
+    const inspections = await response.json();
+    console.log(inspections);
 
-    if (productions.status === true) {
-      if (productions.data.length === 0) {
-        receiveProduction.innerHTML = `
+    if (inspections.status === true) {
+      if (inspections.data.length === 0) {
+        receiveInspection.innerHTML = `
                 <div class="w-full bg-card p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl flex justify-center items-center">
-                  <h3 class="text-2xl font-semibold text-red-600 text-center">Aucun producteur</h3>
+                  <h3 class="text-2xl font-semibold text-red-600 text-center">Aucun inspection</h3>
                 </div>
                 `;
       } else {
-        productions.data.filter((producteur) => {
-          if (producteur.role === "RespProduction") {
-            receiveProduction.innerHTML += `
+        inspections.data.filter((inspection) => {
+          if (inspection.role === "RespInspection") {
+            receiveInspection.innerHTML += `
                   <div
                      class="bg-card p-6  flex flex-col items-center justify-center rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl"
                   >
                     <img
                       src="../../assets/img/personne.png"
-                      alt="producteur 1"
+                      alt="inspection 1"
                       class="mb-4 rounded-lg mg-auto"
                       width="300"
                       height="200"
                     />
-                    <h3 class="text-2xl font-semibold text-red-600">${producteur.code}</h3>
-                    <p class="text-s text-muted-foreground">Nom: ${producteur.nom}</p>
-                    <p class="text-sm text-muted-foreground">Prénom: ${producteur.prenom}</p>
+                    <h3 class="text-2xl font-semibold text-red-600">${inspection.code}</h3>
+                    <p class="text-s text-muted-foreground">Nom: ${inspection.nom}</p>
+                    <p class="text-sm text-muted-foreground">Prénom: ${inspection.prenom}</p>
                     <br />
                     <div class="flex gap-4">
-                        <p class="text-white font-semibold bg-green-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="showModifFormulaire('${producteur._id}', ${producteur.code}, '${producteur.nom}', '${producteur.prenom}')">Modifier</p>
-                        <p class="text-white font-semibold bg-red-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="deleteProducteur('${producteur._id}')">Supprimer</p>
+                        <p class="text-white font-semibold bg-green-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="showModifFormulaire('${inspection._id}', ${inspection.code}, '${inspection.nom}', '${inspection.prenom}')">Modifier</p>
+                        <p class="text-white font-semibold bg-red-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="deleteInspecteur('${inspection._id}')">Supprimer</p>
                     </div>
                   </div>
                   `;
@@ -137,12 +137,12 @@ const fetchProductions = async () => {
         });
       }
     }
-    return productions;
+    return inspections;
   } catch (error) {
     console.error(error);
   }
 };
-fetchProductions();
+fetchInspections();
 
 const showModifFormulaire = (id, code, nom, prenom) => {
   document.getElementById("modifCode").value = code;
@@ -152,7 +152,7 @@ const showModifFormulaire = (id, code, nom, prenom) => {
   document.getElementById("modifForm").style.display = "block";
 };
 
-const deleteProducteur = async (id) => {
+const deleteInspecteur = async (id) => {
   console.log(id);
   const url = `http://localhost:3000/api/v1/users/delete-user/${id}`;
   const options = {
