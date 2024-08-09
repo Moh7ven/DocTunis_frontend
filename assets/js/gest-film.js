@@ -2,7 +2,6 @@ const userRole = document.getElementById("user");
 const btnLogout = document.getElementById("logout");
 const receiveFilms = document.getElementById("receive-films");
 const registerBtn = document.getElementById("register");
-console.log();
 
 const btnModif = document.getElementById("modif-film");
 
@@ -106,6 +105,8 @@ const registerFilm = async () => {
     titre,
     date,
     sujet,
+    realisateur,
+    producteur,
   };
   if (verifyChamp() === true) {
     fetch("http://localhost:3000/api/v1/films/create-film", {
@@ -156,6 +157,42 @@ const fetchFilms = async () => {
     console.log(films);
 
     if (films.status === true) {
+      if (films.data.length === 0) {
+        receiveFilms.innerHTML = `
+        <div class="w-full bg-card p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl flex justify-center items-center">
+          <h3 class="text-2xl font-semibold text-red-600 text-center">Aucun film enregistré</h3>
+        </div>
+        `;
+      } else {
+        films.data.forEach((film) => {
+          receiveFilms.innerHTML += `
+        <div
+            class="bg-card p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl"
+          >
+            <img
+              src="../../assets/img/projection.jpg"
+              alt="Projection 1"
+              class="mb-4 rounded-lg"
+              width="400"
+              height="200"
+            />
+            <h3 class="text-2xl font-semibold text-red-600">${film.code}</h3>
+            <p class="text-s underline text-muted-foreground">Titre: ${
+              film.titre
+            }</p>
+            <p class="text-sm text-muted-foreground">Date: ${film.date}</p>
+            <p class="text-sm text-muted-foreground">Sujet: ${film.sujet}</p>
+            <p class="text-sm text-muted-foreground">Realisateur: ${
+              film.realisateur.code
+            } | ${film.realisateur.nom} ${film.realisateur.prenom}</p>
+            <br />
+            <p class="text-m text-muted-foreground" style="font-style: italic">Note: ${
+              !film.note ? 0 : film.note.note
+            }/20</p>
+          </div>
+        `;
+        });
+      }
     }
     return films;
   } catch (error) {

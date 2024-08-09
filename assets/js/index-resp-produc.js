@@ -55,7 +55,7 @@ const fetchProjections = async () => {
             }</p>
             <br />
             <p class="text-m text-muted-foreground" style="font-style: italic">Note: ${
-              projection.film.note.note !== null ? projection.film.note.note : 0
+              !projection.film.note ? 0 : projection.film.note.note
             }/20</p>
           </div>
           `;

@@ -192,7 +192,7 @@
                 <label
                   class="block text-sm font-medium text-muted-foreground"
                   for="date"
-                  >Prenom</label
+                  >Date</label
                 >
                 <input
                   type="date"
@@ -221,9 +221,11 @@
                   for="realisateur"
                   >Realisateur</label
                 >
-                <select name="realisateurs" id="realisateur" class="text-black mt-1 block w-full border border-border rounded-md p-2">
-
-                </select>
+                <select
+                  name="realisateurs"
+                  id="realisateur"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                ></select>
               </div>
               <div class="mb-4">
                 <label
@@ -231,9 +233,11 @@
                   for="producteur"
                   >Producteur</label
                 >
-                <select name="producteur" id="producteur" class="text-black mt-1 block w-full border border-border rounded-md p-2">
-
-                </select>
+                <select
+                  name="producteur"
+                  id="producteur"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                ></select>
               </div>
               <p id="message"></p>
               <button
@@ -254,6 +258,7 @@
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
             id="receive-films"
           ></div>
+        </div>
         <div
           class="flex flex-col items-center justify-center w-full hidden"
           id="modifForm"
@@ -310,18 +315,18 @@
                   />
                 </div>
                 <div class="mb-4">
-                <label
-                  class="block text-sm font-medium text-muted-foreground"
-                  for="modifDate"
-                  >Date de Naissance</label
-                >
-                <input
-                  type="date"
-                  id="modifDate"
-                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
-                  placeholder="Entez le prenom"
-                />
-              </div>
+                  <label
+                    class="block text-sm font-medium text-muted-foreground"
+                    for="modifDate"
+                    >Date de Naissance</label
+                  >
+                  <input
+                    type="date"
+                    id="modifDate"
+                    class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                    placeholder="Entez le prenom"
+                  />
+                </div>
                 <p id="messageModif"></p>
                 <button
                   type="submit"
@@ -344,5 +349,4 @@
     </div>
     <script src="../../assets/js/gest-film.js"></script>
   </body>
-
 </html>
