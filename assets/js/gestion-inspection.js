@@ -153,7 +153,6 @@ const showModifFormulaire = (id, code, nom, prenom) => {
 };
 
 const deleteInspecteur = async (id) => {
-  console.log(id);
   const url = `http://localhost:3000/api/v1/users/delete-user/${id}`;
   const options = {
     method: "DELETE",

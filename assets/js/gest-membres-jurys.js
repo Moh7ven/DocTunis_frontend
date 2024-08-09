@@ -53,7 +53,7 @@ const fetchMembreJurys = async () => {
                       <br />
                       <div class="flex gap-4">
                           <p class="text-white font-semibold bg-green-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="showModifFormulaire('${membre._id}', ${membre.code}, '${membre.nom}', '${membre.prenom}')">Modifier</p>
-                          <p class="text-white font-semibold bg-red-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="deleteInspecteur('${membre._id}')">Supprimer</p>
+                          <p class="text-white font-semibold bg-red-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="deleteMembre('${membre._id}')">Supprimer</p>
                       </div>
                     </div>
                     `;
@@ -141,3 +141,26 @@ registerBtn.addEventListener("click", (e) => {
   e.preventDefault();
   registerProducteur();
 });
+
+const deleteMembre = async (id) => {
+  const url = `http://localhost:3000/api/v1/membre-jurys/delete-membre-jurys/${id}`;
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  };
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
+
+    if (result.status === true) {
+      alert("Membre jurys supprimé");
+      window.location.reload();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
