@@ -1,6 +1,7 @@
 const userRole = document.getElementById("user");
 const btnLogout = document.getElementById("logout");
 const receiveMembreJurys = document.getElementById("receive-membres");
+const btnModif = document.getElementById("modif-membre");
 
 const registerBtn = document.getElementById("register");
 
@@ -47,13 +48,29 @@ const fetchMembreJurys = async () => {
                         width="300"
                         height="200"
                       />
-                      <h3 class="text-2xl font-semibold text-red-600">${membre.code}</h3>
-                      <p class="text-s text-muted-foreground">Nom: ${membre.nom}</p>
-                      <p class="text-sm text-muted-foreground">Prénom: ${membre.prenom}</p>
+                      <h3 class="text-2xl font-semibold text-red-600">${
+                        membre.code
+                      }</h3>
+                      <p class="text-s text-muted-foreground">Nom: ${
+                        membre.nom
+                      }</p>
+                      <p class="text-sm text-muted-foreground">Prénom: ${
+                        membre.prenom
+                      }</p>
+                      <p class="text-s text-muted-foreground">Date de naissance: ${membre.dateNaissance
+                        .split("-")
+                        .reverse()
+                        .join("-")}</p>
                       <br />
                       <div class="flex gap-4">
-                          <p class="text-white font-semibold bg-green-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="showModifFormulaire('${membre._id}', ${membre.code}, '${membre.nom}', '${membre.prenom}')">Modifier</p>
-                          <p class="text-white font-semibold bg-red-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="deleteMembre('${membre._id}')">Supprimer</p>
+                          <p class="text-white font-semibold bg-green-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="showModifFormulaire('${
+                            membre._id
+                          }', ${membre.code}, '${membre.nom}', '${
+            membre.prenom
+          }', '${membre.dateNaissance}')">Modifier</p>
+                          <p class="text-white font-semibold bg-red-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md cursor-pointer" onclick="deleteMembre('${
+                            membre._id
+                          }')">Supprimer</p>
                       </div>
                     </div>
                     `;
@@ -164,3 +181,51 @@ const deleteMembre = async (id) => {
     console.log(error);
   }
 };
+
+const showModifFormulaire = async (id, code, nom, prenom, dateNaissance) => {
+  document.getElementById("modifCode").value = code;
+  document.getElementById("modifNom").value = nom;
+  document.getElementById("modifPrenom").value = prenom;
+  document.getElementById("modifDateNaissance").value = dateNaissance;
+  document.getElementById("modifId").value = id;
+  document.getElementById("modifForm").style.display = "block";
+};
+
+const modifMembre = async () => {
+  const id = document.getElementById("modifId").value;
+  const code = document.getElementById("modifCode").value;
+  const nom = document.getElementById("modifNom").value;
+  const prenom = document.getElementById("modifPrenom").value;
+  const dateNaissance = document.getElementById("modifDateNaissance").value;
+
+  const url = `http://localhost:3000/api/v1/membre-jurys/update-membre-jurys/${id}`;
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({
+      code,
+      nom,
+      prenom,
+      dateNaissance,
+    }),
+  };
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
+    if (result.status === true) {
+      alert("Responsable de production modifié");
+      window.location.reload();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+btnModif.addEventListener("click", (e) => {
+  e.preventDefault();
+  modifMembre();
+});

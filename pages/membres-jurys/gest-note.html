@@ -110,32 +110,19 @@
           <ul class="flex space-x-6">
             <li>
               <a
-                href="./gestion-production.html"
+                href="./gest-note.html"
                 class="text-lg text-white hover:underline"
-                >Gestion Production</a
+                >Gestion Notes</a
               >
             </li>
-            <li>
-              <a
-                href="./gestion-inspection.html"
-                class="text-lg text-white hover:underline"
-                >Gestion Inspection</a
-              >
-            </li>
-            <li>
-              <a
-                href="./gestion-membrejury.html"
-                class="text-lg text-white hover:underline"
-                >Gestion Membres du jurys</a
-              >
-            </li>
+
             <span>|</span>
             <li>
               <a
-                href="./index.html"
+                href="./acceuil-membre-jurys.html"
                 class="text-lg text-white hover:underline bg-red-900"
-                >Bienvenue <span id="user"></span
-              ></a>
+                >Bienvenue Jury</a
+              >
             </li>
             <span>|</span>
             <li>
@@ -146,16 +133,14 @@
           </ul>
         </nav>
       </header>
+
       <div class="container mx-auto py-10">
         <h2
-          class="text-4xl font-semibold mb-8 text-center bg-red-600 rounded-lg"
+          class="text-4xl font-semibold mb-8 text-center text-white pd--10 rounded-lg bg-red-600"
         >
-          Enregistrer Membre du Jurys
+          Ajouter une Note a un Film
         </h2>
-        <div
-          class="flex flex-col items-center justify-center w-full"
-          id="receive-projection"
-        >
+        <div class="flex flex-col items-center justify-center w-full" id="">
           <div class="mt-10 w-2/3">
             <h2 class="text-3xl font-semibold mb-6 text-center text-red-600">
               Formulaire
@@ -164,54 +149,31 @@
               <div class="mb-4">
                 <label
                   class="block text-sm font-medium text-muted-foreground"
-                  for="code"
-                  >Code</label
+                  for="note"
+                  >Note</label
                 >
                 <input
                   type="number"
-                  id="code"
-                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
-                  placeholder="Entrez le code"
+                  max="20"
+                  min="0"
+                  maxlength="2"
+                  multiple="multiple"
+                  id="note"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2 placeholder:text-muted-foreground"
+                  placeholder="Entrez la note"
                 />
               </div>
               <div class="mb-4">
                 <label
                   class="block text-sm font-medium text-muted-foreground"
-                  for="nom"
-                  >Nom</label
+                  for="films"
+                  >films</label
                 >
-                <input
-                  type="text"
-                  id="nom"
+                <select
+                  name="films"
+                  id="films"
                   class="text-black mt-1 block w-full border border-border rounded-md p-2"
-                  placeholder="Entez le nom"
-                />
-              </div>
-              <div class="mb-4">
-                <label
-                  class="block text-sm font-medium text-muted-foreground"
-                  for="prenom"
-                  >Prenom</label
-                >
-                <input
-                  type="text"
-                  id="prenom"
-                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
-                  placeholder="Entez le prenom"
-                />
-              </div>
-              <div class="mb-4">
-                <label
-                  class="block text-sm font-medium text-muted-foreground"
-                  for="dateNaissance"
-                  >Date de naissance</label
-                >
-                <input
-                  type="date"
-                  id="dateNaissance"
-                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
-                  placeholder="Entez le prenom"
-                />
+                ></select>
               </div>
               <p id="message"></p>
               <button
@@ -223,95 +185,93 @@
               </button>
             </form>
           </div>
-        </div>
-        <h2
-          class="text-4xl font-semibold mb-8 text-center bg-red-600 rounded-lg mt-10"
-        >
-          Liste Des Membres du Jurys
-        </h2>
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-          id="receive-membres"
-        ></div>
-
-        <div
-          class="flex flex-col items-center justify-center w-full hidden"
-          id="modifForm"
-        >
-          <h2
-            class="text-4xl w-full font-semibold mb-8 text-center bg-red-600 rounded-lg mt-10"
+          <!-- <h2
+            class="text-4xl font-semibold mb-8 text-center bg-red-600 rounded-lg mt-10 w-full"
           >
-            Modification
+            Liste des Plannings
           </h2>
-          <div class="flex flex-col items-center justify-center w-full" id="">
-            <div class="mt-10 w-2/3">
-              <h2 class="text-3xl font-semibold mb-6 text-center text-red-600">
-                Formulaire
-              </h2>
-              <form class="bg-card p-6 rounded-lg shadow-lg">
-                <input type="text" id="modifId" class="hidden" />
-                <div class="mb-4">
-                  <label
-                    class="block text-sm font-medium text-muted-foreground"
-                    for="modifCode"
-                    >Code</label
-                  >
-                  <input
-                    type="number"
-                    id="modifCode"
-                    class="text-black mt-1 block w-full border border-border rounded-md p-2"
-                    placeholder="Entrez le code"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label
-                    class="block text-sm font-medium text-muted-foreground"
-                    for="modifNom"
-                    >Nom</label
-                  >
-                  <input
-                    type="text"
-                    id="modifNom"
-                    class="text-black mt-1 block w-full border border-border rounded-md p-2"
-                    placeholder="Entez le nom"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label
-                    class="block text-sm font-medium text-muted-foreground"
-                    for="modifPrenom"
-                    >Prenom</label
-                  >
-                  <input
-                    type="text"
-                    id="modifPrenom"
-                    class="text-black mt-1 block w-full border border-border rounded-md p-2"
-                    placeholder="Entez le prenom"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label
-                    class="block text-sm font-medium text-muted-foreground"
-                    for="modifDateNaissance"
-                    >Mot de passe</label
-                  >
-                  <input
-                    type="date"
-                    id="modifDateNaissance"
-                    class="text-black mt-1 block w-full border border-border rounded-md p-2"
-                    placeholder="Entez la date de naissance"
-                  />
-                </div>
-                <p id="message"></p>
-                <button
-                  type="submit"
-                  class="text-white font-semibold bg-green-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md"
-                  id="modif-membre"
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+            id="receive-planning"
+          ></div> -->
+        </div>
+      </div>
+      <div
+        class="flex flex-col items-center justify-center w-full hidden"
+        id="modifForm"
+      >
+        <h2
+          class="text-4xl w-full font-semibold mb-8 text-center bg-red-600 rounded-lg mt-10"
+        >
+          Modification
+        </h2>
+        <div class="flex flex-col items-center justify-center w-full" id="">
+          <div class="mt-10 w-2/3">
+            <h2 class="text-3xl font-semibold mb-6 text-center text-red-600">
+              Formulaire
+            </h2>
+            <form class="bg-card p-6 rounded-lg shadow-lg">
+              <input type="text" id="modifId" class="hidden" />
+              <div class="mb-4">
+                <label
+                  class="block text-sm font-medium text-muted-foreground"
+                  for="modifJour"
+                  >Jour</label
                 >
-                  Modifier
-                </button>
-              </form>
-            </div>
+                <input
+                  type="date"
+                  id="modifJour"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                  placeholder="Entrez le Jour"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  class="block text-sm font-medium text-muted-foreground"
+                  for="modifHeure"
+                  >Heure</label
+                >
+                <input
+                  type="time"
+                  id="modifHeure"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                  placeholder="Entez le Heure"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  class="block text-sm font-medium text-muted-foreground"
+                  for="modifLieu"
+                  >Lieu</label
+                >
+                <input
+                  type="text"
+                  id="modifLieu"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                  placeholder="Entez le Lieu"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  class="block text-sm font-medium text-muted-foreground"
+                  for="modifFilm"
+                  >films</label
+                >
+                <select
+                  name="films"
+                  id="modifFilm"
+                  class="text-black mt-1 block w-full border border-border rounded-md p-2"
+                ></select>
+              </div>
+              <p id="message"></p>
+              <button
+                type="submit"
+                class="text-white font-semibold bg-green-600 hover:bg-secondary/80 hover:text-black py-2 px-4 rounded-md"
+                id="modif-planning"
+              >
+                Modifier
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -322,6 +282,6 @@
         </p>
       </footer>
     </div>
-    <script src="../../assets/js/gest-membres-jurys.js"></script>
+    <script src="../../assets/js/gest-note.js"></script>
   </body>
 </html>
